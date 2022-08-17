@@ -1,0 +1,27 @@
+body{
+	margin: 0 auto;
+	height: 100%;
+}
+#top{
+
+	height:80px;
+	min-width: 20px;
+}
+#log{
+	float: left; 
+	margin-left: 3%;
+}
+.head-right{
+	width: 60px;
+	float: right;
+	padding: 5px;
+
+}
+.body-img{
+	width: 24%;	
+	height: 50%;
+	float: left; 
+	margin-top:80px ;
+	padding: 10px 0px 10px 10px;
+	background-color: #000;
+}
