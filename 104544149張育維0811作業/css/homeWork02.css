@@ -1,0 +1,67 @@
+body{
+	margin: 0 auto;
+	height: 100%;
+}
+#top{
+
+	height:120px;
+	min-width: 20px;
+	margin-bottom: 100px;
+}
+#log{
+	float: left; 
+	margin-left: 3%;
+}
+#BB{
+	min-height: 100%;/*整個區塊高度為100%*/
+	width: 100%;
+	margin-top: -120px;
+	background-color: #ccc;
+}
+#bodyR{
+	float: right;
+	width: 29%;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	margin: 3px;
+}
+#bodyR img{
+	width: 80%;
+
+}
+#bodyL{
+	float:left;
+	width: 69%;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	margin: 3px;
+}
+#bodyL img{
+	width: 400px;
+	
+}
+#bodyLT{
+	border: 3px solid #ccc;
+	background-color: #fff;
+	margin: 0px;
+}
+#bodyLD{
+	border: 3px solid #ccc;
+	background-color: #fff;
+	margin: 0px;
+}
+#bodyLD img{
+	width: 50%;
+}
+#bodyLD ol{
+	float: right;
+	padding-right: 10%;
+	
+}
+.head-right{
+	width: 60px;
+	float: right;
+	padding: 5px;
+
+
+}
