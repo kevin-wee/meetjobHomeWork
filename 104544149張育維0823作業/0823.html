@@ -1,0 +1,162 @@
+<html style="height: 100%;">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<title>下拉式選單</title>
+	
+	<style type="text/css">
+		body{
+			padding: 0;
+			margin: 0;
+			height: auto;
+		}
+		#menu{
+			width: 100%;
+			height: 30px;
+			background-color: #555;
+		}
+		#menulist{
+			position: absolute;
+				/*position定位  fix固定 absolute依父位置做絕對位置*/
+			height: 70px;
+		}
+		#menulist,#menulist ul{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}		
+		#menulist li{
+			border-right: 1px solid #fff;
+			float: left;
+			background-color: #555;
+		}
+		#menulist a{
+			color: #fff;
+			display: block;
+			text-decoration: none;
+			width: 120px;
+		}
+		#menulist li ul{
+			position: absolute;/*絕對位置*/
+			left: auto; /*對於絕對位置的元素 會依內容的寬度來設置*/
+			width: 80px;
+		}
+		.active{
+			background-color: #f0f;
+		}
+		#bgImg{
+
+			padding: 0;
+			width: 100%;
+			height: auto;
+		}
+		.item li{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		#meta{
+			margin-top: -500;
+			height: 500;
+		}
+		.catalog{
+			margin-left: 15px;
+			border: 1px;
+			border-style: solid;
+		}
+
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$("#menulist li ul").hide();
+			$("#menulist li").hover(
+				function () {
+					$(this).find("ul").slideDown("fast");
+					$(this).find("a:first").addClass("active");
+				},function () {
+					$(this).find(".submenu").fadeOut("fast");
+					$(this).find("a").removeClass("active");
+				}
+			);
+		})
+		$(document).ready(function () {
+			$(".item").hide();//隱藏
+			//$(".item").not(":first").slideUp();//除了第一個都收起來
+			$(".catalog").click(function(){
+				//$(".item:visible").slideUp('slow');//先全部收起來
+				$(this).next().slideToggle('slow');//然後指定點擊處的下一個打開
+
+				//visible可見的
+				//hidden不可見的
+			});
+		});
+		$(document).ready(function () {
+			$("#btn1").click(function(){
+				var old = $("#old").val();
+				if (old > 50){
+					alert(`SORRY老先生~這裡要小心心血管疾病`);
+				}else if(old < 15){
+					alert(`小朋友~你的年齡太輕了!早點去睡吧!`);
+				}else{
+					alert(`抱歉我還沒有更新`);
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="menu">
+		<ul id="menulist">
+			<li><a href="#">關於我們</a>
+				<ul class="submenu">
+					<li><a href="#">創業理念</a></li>
+					<li><a href="#">創業過程</a></li>
+					<li><a href="#">員工活動照片</a></li>
+				</ul>
+			</li>
+			<li><a href="#">產品</a>
+				<ul class="submenu">
+					<li><a href="#">3c</a></li>
+					<li><a href="#">家電</a></li>
+					<li><a href="#">車用</a></li>
+				</ul>
+			</li>
+			<li><a href="#">軟件支援</a>
+				<ul class="submenu">
+					<li><a href="#">電腦支援軟體</a></li>
+					<li><a href="#">家電軟件更新</a></li>
+					<li><a href="#">車用版本更新</a></li>
+				</ul>
+			</li>
+			<li><a href="#">服務</a>
+				<ul class="submenu">
+					<li><a href="#">Line</a></li>
+					<li><a href="#">E-mail</a></li>
+					<li><a href="#">據點位置</a></li>
+				</ul>
+			</li>
+			<li><a href="#">留下留言</a></li>
+		</ul>
+	</div>
+	<div id="bgImg">
+		<img src="img/BG.jpg" width="100%">
+	</div>
+	<div id="meta">
+		<div class="catalog">
+			<h2>1060722澎湖行</h2>
+		</div>
+		<ul class="item">
+			<li>抱歉~太久遠了我也忘了過程...</li>
+			<li>只記得阿萍小卷麵線跟冰卷超好吃!只好再去一次了!</li>
+			<li>老師我覺得把字放在圖片上比較漂亮~</li>
+		</ul>
+	</div>
+	<div>
+		<label for="old">你的年齡:</label>
+		<input type="text" id="old">
+		<button id="btn1">我想看更多~</button>
+	</div>
+
+</body>
+</html>
