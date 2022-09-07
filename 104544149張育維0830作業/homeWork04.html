@@ -1,0 +1,152 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<title>作業0830</title>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var i =0;
+			var clone = $(".banner .img li").first().clone();//複製第一張圖
+			$(".banner .img").append(clone);//將複製的第一張圖貼到最後面去
+
+			var size = $(".banner .img li").size();//抓個數
+
+			/*自動播放*/
+			//
+			var t = setInterval(function(){
+				i++;
+				move();
+			},2000);
+
+			function move() {
+				if (i==size) {
+					$(".banner .img").css({left:0});
+					i=1;	
+				}
+				if (i==-1) {
+					$(".banner .img").css({left:-(size -1)*500});
+					i = size -2;
+				}
+				$(".banner .img").stop().animate({left:-i*500},500);
+				/*動畫,往左拉 500px , 會隨著i改變越拉越多*/
+			};
+
+			/*滑鼠移入此區域時*/
+			$(".banner").hover(function () {
+				clearInterval(t); //清除計時器
+			},function () {
+				t = setInterval(function () {
+					i++;
+					move();
+				},2000);
+			});
+
+			/*左右按鈕*/
+			$(".banner .left").click(function(){
+				i++;
+				move();
+			});
+			$(".banner .right").click(function(){
+				i--;
+				move();
+			});
+		});
+	</script>
+
+	<style type="text/css">
+		*{
+			margin: 0;
+			list-style: none;
+			padding: 0;
+		}
+		#body1{
+			height: 300px;
+			margin-top: 100px;
+		}
+		.banner{
+			float: left;
+			margin-left: 100;
+			width: 500px;
+			height: 300px;
+			border: 1px solid #ccc;
+			position: relative;/*定位屬性*/
+			overflow: hidden; /*超過就隱藏*/
+		}
+		.banner .img{
+			width: 5000px;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		.banner .img img{
+			width: 500px;
+			height: 300px;
+			/*高度要跟.banner一樣*/
+		}
+		.banner .img li{
+			float: left;
+		}
+		.banner .btn{
+			width: 30px;
+			height: 50px;
+			background-color: #ccc;
+
+			/*透明度寫法*/
+			opacity: 0.5;
+			filter: alpha(opacity0.5) ;
+			position: absolute;
+			top: 50%;
+			margin-top: -25px;
+
+			/*字型顏色*/
+			cursor: pointer;
+			text-align: center;
+			line-height: 50px;
+			font-size: 50px;
+			color: #fff;
+			display: none;
+		}
+		.banner .left{
+			left: 0px;
+		}
+		.banner .right{
+			right: 0px;
+		}
+		.banner:hover .btn{
+			display: block;
+		}
+		.banner1 img{
+			height: 100px;
+			width: 165px;
+		}
+		#body2{
+			margin: 50px;
+			width: auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="body1">
+		<div class="banner">
+			<ul class="img">
+				<li><img src="img/car/01.jpg"></li>
+				<li><img src="img/car/02.jpg"></li>
+				<li><img src="img/car/03.jpg"></li>
+				
+			</ul>
+
+			<div class="btn left">&lt;</div>
+			<div class="btn right">&gt;</div>
+		</div>
+		<div class="banner1">
+			<div><img src="img/car/01.jpg"></div>
+			<div><img src="img/car/02.jpg"></div>
+			<div><img src="img/car/03.jpg"></div>
+		</div>
+	</div>
+	<div id="body2">
+	<p>剩下的下周搞定近請期待>_<</p>
+	</div>
+	<p></p>
+</body>
+</html>
